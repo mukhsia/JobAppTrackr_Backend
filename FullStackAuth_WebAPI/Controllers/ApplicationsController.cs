@@ -204,7 +204,7 @@ namespace FullStackAuth_WebAPI.Controllers
 
         }
 
-        // PUT api/applications/archive/5
+        // PATCH api/applications/archive/1
         [HttpPatch("archive/{id}"), Authorize]
         public IActionResult PatchArchiveUsersApplication(int id)
         {
@@ -223,6 +223,55 @@ namespace FullStackAuth_WebAPI.Controllers
                     return Unauthorized();
                 }
                 application.Archived = !application.Archived;
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                _context.SaveChanges();
+
+                var result = new ApplicationWithUserDto
+                {
+                    Id = application.Id,
+                    Title = application.Title,
+                    Archived = application.Archived,
+                    Status = application.Status,
+                    Company = application.Company,
+                    Owner = new UserForDisplayDto
+                    {
+                        Id = application.Owner.Id,
+                        FirstName = application.Owner.FirstName,
+                        LastName = application.Owner.LastName,
+                        UserName = application.Owner.UserName,
+                    }
+                };
+
+                return StatusCode(201, result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        // PATCH api/applications/status/1
+        [HttpPatch("status/{id}"), Authorize]
+        public IActionResult PatchStatusUsersApplication(int id, [FromBody] ApplicationStatusDto data)
+        {
+            try
+            {
+                Application application = _context.Applications.Include(a => a.Owner).FirstOrDefault(a => a.Id == id);
+
+                if (application == null)
+                {
+                    return NotFound();
+                }
+
+                var userId = User.FindFirstValue("id");
+                if (string.IsNullOrEmpty(userId) || application.OwnerId != userId)
+                {
+                    return Unauthorized();
+                }
+                application.Status = data.Status;
                 if (!ModelState.IsValid)
                 {
                     return BadRequest(ModelState);
