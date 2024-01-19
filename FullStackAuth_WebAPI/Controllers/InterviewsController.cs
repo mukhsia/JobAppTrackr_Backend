@@ -21,6 +21,29 @@ namespace FullStackAuth_WebAPI.Controllers
             _context = context;
         }
 
+        // GET: api/interviews
+        [HttpGet, Authorize]
+        public IActionResult GetAllUsersInterviews()
+        {
+            try
+            {
+                string userId = User.FindFirstValue("id");
+
+                if (string.IsNullOrEmpty(userId))
+                {
+                    return Unauthorized();
+                }
+
+                var applications = _context.Interviews.Include(i => i.Job).Where(i => i.Job.OwnerId.Equals(userId)).ToList();
+
+                return StatusCode(200, applications);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
+
         // GET api/interviews/1
         [HttpGet("{id}"), Authorize]
         public IActionResult GetUsersInterviews(int id)

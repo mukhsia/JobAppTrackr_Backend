@@ -597,6 +597,32 @@
 			"name": "Interview",
 			"item": [
 				{
+					"name": "Get All Interviews",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6ImJvYiIsImVtYWlsIjoiYm9iQGJvYi5ib2IiLCJpZCI6IjNhOGNiM2I3LTQ2NjEtNDQxNi05YWZlLTRkZjVkYjg5NDg5ZCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXIiLCJleHAiOjE3MDU1MjQ2NjMsImlzcyI6IkZ1bGxTdGFja0F1dGhfV2ViQVBJIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NTAwMSJ9.DjAuXAh2ibawCV85Y6C9XaP2PPcrmUzyvrYd05KmWr8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:5001/api/interviews",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"interviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get Interviews by Application Id",
 					"request": {
 						"method": "GET",
