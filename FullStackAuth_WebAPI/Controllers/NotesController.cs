@@ -21,7 +21,7 @@ namespace FullStackAuth_WebAPI.Controllers
             _context = context;
         }
 
-        // GET api/applications/1
+        // GET api/notes/1
         [HttpGet("{id}"), Authorize]
         public IActionResult GetUsersNotes(int id)
         {
@@ -48,7 +48,7 @@ namespace FullStackAuth_WebAPI.Controllers
             }
         }
 
-        // POST api/applications
+        // POST api/notes
         [HttpPost, Authorize]
         public IActionResult PostUsersNote([FromBody] Note note)
         {
@@ -83,7 +83,7 @@ namespace FullStackAuth_WebAPI.Controllers
             }
         }
 
-        // PUT api/applications/5
+        // PUT api/notes/5
         [HttpPut("{id}"), Authorize]
         public IActionResult PutEditNote(int id, [FromBody] Note data)
         {
