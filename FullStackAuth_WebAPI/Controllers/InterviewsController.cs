@@ -34,9 +34,9 @@ namespace FullStackAuth_WebAPI.Controllers
                     return Unauthorized();
                 }
 
-                var applications = _context.Interviews.Include(i => i.Job).Where(i => i.Job.OwnerId.Equals(userId)).ToList();
+                var interviews = _context.Interviews.Include(i => i.Job).Where(i => i.Job.OwnerId.Equals(userId)).ToList();
 
-                return StatusCode(200, applications);
+                return StatusCode(200, interviews);
             }
             catch (Exception ex)
             {

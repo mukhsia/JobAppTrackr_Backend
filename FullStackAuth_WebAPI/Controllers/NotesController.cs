@@ -21,6 +21,29 @@ namespace FullStackAuth_WebAPI.Controllers
             _context = context;
         }
 
+        // GET: api/notes
+        [HttpGet, Authorize]
+        public IActionResult GetAllUsersNotes()
+        {
+            try
+            {
+                string userId = User.FindFirstValue("id");
+
+                if (string.IsNullOrEmpty(userId))
+                {
+                    return Unauthorized();
+                }
+
+                var notes = _context.Notes.Include(n => n.Job).Where(n => n.Job.OwnerId.Equals(userId)).ToList();
+
+                return StatusCode(200, notes);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
+
         // GET api/notes/1
         [HttpGet("{id}"), Authorize]
         public IActionResult GetUsersNotes(int id)
