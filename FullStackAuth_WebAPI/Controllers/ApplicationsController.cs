@@ -124,23 +124,7 @@ namespace FullStackAuth_WebAPI.Controllers
                 }
                 _context.SaveChanges();
 
-                var result = new ApplicationWithUserDto
-                {
-                    Id = application.Id,
-                    Title = application.Title,
-                    Archived = application.Archived,
-                    Status = application.Status,
-                    Company = application.Company,
-                    Owner = new UserForDisplayDto
-                    {
-                        Id = application.Owner.Id,
-                        FirstName = application.Owner.FirstName,
-                        LastName = application.Owner.LastName,
-                        UserName = application.Owner.UserName,
-                    }
-                };
-
-                return StatusCode(201, result);
+                return StatusCode(201, application);
             }
             catch (Exception ex)
             {
