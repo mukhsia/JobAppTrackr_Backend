@@ -58,10 +58,6 @@ namespace FullStackAuth_WebAPI.Controllers
                 }
 
                 var notes = _context.Notes.Include(n => n.Job).Where(n => n.JobId == id && n.Job.OwnerId == userId).ToList();
-                if (notes.IsNullOrEmpty())
-                {
-                    return NotFound();
-                }
 
                 return StatusCode(200, notes);
             }

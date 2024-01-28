@@ -34,13 +34,15 @@ namespace FullStackAuth_WebAPI.Controllers
                     return Unauthorized();
                 }
 
-                var application = _context.Applications.Where(a => a.OwnerId.Equals(userId)).Select(a => new ApplicationWithUserDto
+                var application = _context.Applications.Where(a => a.OwnerId.Equals(userId)).Select(a => new ApplicationWithUserInterviewsNotesDto
                 {
                     Id = a.Id,
                     Title = a.Title,
                     Archived = a.Archived,
                     Status = a.Status,
                     Company = a.Company,
+                    Interviews = _context.Interviews.Where(i => i.JobId==a.Id).ToList(),
+                    Notes = _context.Notes.Where(n => n.JobId==a.Id).ToList(),
                     Owner = new UserForDisplayDto
                     {
                         Id = a.Owner.Id,
@@ -77,13 +79,15 @@ namespace FullStackAuth_WebAPI.Controllers
                     return NotFound();
                 }
 
-                var result = new ApplicationWithUserDto
+                var result = new ApplicationWithUserInterviewsNotesDto
                 {
                     Id = application.Id,
                     Title = application.Title,
                     Archived = application.Archived,
                     Status = application.Status,
                     Company = application.Company,
+                    Interviews = _context.Interviews.Where(i => i.JobId==application.Id).ToList(),
+                    Notes = _context.Notes.Where(n => n.JobId==application.Id).ToList(),
                     Owner = new UserForDisplayDto
                     {
                         Id = application.Owner.Id,

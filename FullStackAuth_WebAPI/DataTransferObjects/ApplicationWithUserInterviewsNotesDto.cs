@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FullStackAuth_WebAPI.DataTransferObjects
 {
-    public class ApplicationWithUserDto
+    public class ApplicationWithUserInterviewsNotesDto
     {
 
         [Key]
@@ -13,6 +13,8 @@ namespace FullStackAuth_WebAPI.DataTransferObjects
         public bool Archived { get; set; }
         public string Status { get; set; }
         public string Company { get; set; }
+        public List<Interview> Interviews { get; set; }
+        public List<Note> Notes { get; set; }
         public UserForDisplayDto Owner { get; set; }
 
     }

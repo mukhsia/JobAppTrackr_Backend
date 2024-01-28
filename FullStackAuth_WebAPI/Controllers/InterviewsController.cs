@@ -58,10 +58,6 @@ namespace FullStackAuth_WebAPI.Controllers
                 }
 
                 var interviews = _context.Interviews.Include(i => i.Job).Where(i => i.JobId == id && i.Job.OwnerId == userId).ToList();
-                if (interviews.IsNullOrEmpty())
-                {
-                    return NotFound();
-                }
 
                 return StatusCode(200, interviews);
             }
