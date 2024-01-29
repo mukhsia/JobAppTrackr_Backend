@@ -295,7 +295,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Application by Id Copy",
+					"name": "Get Application by Id",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -322,7 +322,7 @@
 					"response": []
 				},
 				{
-					"name": "Post New Application Copy",
+					"name": "Post New Application",
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -360,7 +360,7 @@
 					"response": []
 				},
 				{
-					"name": "Update Application Copy",
+					"name": "Update Application",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -466,6 +466,32 @@
 			"name": "Notes",
 			"item": [
 				{
+					"name": "Get All Notes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6ImJvYiIsImVtYWlsIjoiYm9iQGJvYi5ib2IiLCJpZCI6IjNhOGNiM2I3LTQ2NjEtNDQxNi05YWZlLTRkZjVkYjg5NDg5ZCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXIiLCJleHAiOjE3MDYyODcyNTUsImlzcyI6IkZ1bGxTdGFja0F1dGhfV2ViQVBJIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NTAwMSJ9.rhbhPkP51NKXYUiayVq279KHCuWt-JmHxgBz4GsdwgA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:5001/api/notes",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"notes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get Notes by Application Id",
 					"request": {
 						"method": "GET",
@@ -515,7 +541,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6ImJvYiIsImVtYWlsIjoiYm9iQGJvYi5ib2IiLCJpZCI6IjNhOGNiM2I3LTQ2NjEtNDQxNi05YWZlLTRkZjVkYjg5NDg5ZCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXIiLCJleHAiOjE3MDU2OTg5OTUsImlzcyI6IkZ1bGxTdGFja0F1dGhfV2ViQVBJIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NTAwMSJ9.Zo4Hp3obqZ7cbJ4Qn0K62vs93riavp2VTDnpTBMLHCQ",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6ImJvYiIsImVtYWlsIjoiYm9iQGJvYi5ib2IiLCJpZCI6IjNhOGNiM2I3LTQ2NjEtNDQxNi05YWZlLTRkZjVkYjg5NDg5ZCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXIiLCJleHAiOjE3MDY1MTcwNjQsImlzcyI6IkZ1bGxTdGFja0F1dGhfV2ViQVBJIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NTAwMSJ9.Rs5ME3yMORWG32irrI8p1vtkIaYSphF_g0NZEeeVBsg",
 								"type": "text"
 							}
 						],
@@ -577,7 +603,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:5001/api/notes",
+							"raw": "https://localhost:5001/api/notes/1",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -585,7 +611,8 @@
 							"port": "5001",
 							"path": [
 								"api",
-								"notes"
+								"notes",
+								"1"
 							]
 						}
 					},
